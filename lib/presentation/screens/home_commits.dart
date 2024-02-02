@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takehometest/Utils/Utils.dart';
 import 'package:takehometest/data/controllers/commit_controller.dart';
 
 class HomeCommits extends ConsumerStatefulWidget {
@@ -23,7 +25,9 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
     var height = MediaQuery.sizeOf(context).height;
     var homeCommitController = ref.watch(commitControllerProvider);
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
+        backgroundColor: Colors.grey[200],
         title: const Text('takeHome-Test'),
         centerTitle: true,
       ),
@@ -35,10 +39,27 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
             if (data != null) {
               return ListView.separated(
                   itemBuilder: (context, index) {
-                    return Text(
-                      data[index].commit!.message!,
-                      style: const TextStyle(
-                        color: Colors.black,
+                    return ListTile(
+                      leading: CircleAvatar(
+                        radius: 25,
+                        child: CachedNetworkImage(
+                          imageUrl: data[index].committer!.avatarUrl!,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) =>
+                                  CircularProgressIndicator(
+                                      value: downloadProgress.progress),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      ),
+                      title: Text(
+                        data[index].commit!.message!,
+                        style: const TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                      subtitle: Text(
+                        Utils.formatDate(data[index].commit!.committer!.date!),
                       ),
                     );
                   },

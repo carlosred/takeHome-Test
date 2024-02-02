@@ -6,7 +6,7 @@ class Commit {
   String? htmlUrl;
   String? commentsUrl;
   Author? author;
-  Author? committer;
+  AuthorDetail? committer;
   List<Parents>? parents;
 
   Commit(
@@ -29,8 +29,9 @@ class Commit {
     htmlUrl = json['html_url'];
     commentsUrl = json['comments_url'];
     author = json['author'] != null ? Author.fromJson(json['author']) : null;
-    committer =
-        json['committer'] != null ? Author.fromJson(json['committer']) : null;
+    committer = json['committer'] != null
+        ? AuthorDetail.fromJson(json['committer'])
+        : null;
     if (json['parents'] != null) {
       parents = <Parents>[];
       json['parents'].forEach((v) {

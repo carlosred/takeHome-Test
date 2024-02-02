@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:takehometest/Utils/Contants.dart';
+import 'package:takehometest/Utils/contants.dart';
 import 'package:takehometest/models/commit.dart';
 
 class CommitRepository {
