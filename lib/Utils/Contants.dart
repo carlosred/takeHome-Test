@@ -1,10 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class Contants {
   static String commitUrl =
       'https://api.github.com/repos/carlosred/takeHome-Test/commits';
 
-  //style
+  static String apiGithubStr =
+      'https://api.github.com/repos/carlosred/takeHome-Test/git/commits/';
+  static String urlGithubStr =
+      'https://github.com/carlosred/takeHome-Test/commit/';
 
-  static Color cardColor = Color(0xffF7F7F7);
+  //style contants
+  static Color cardColor = const Color(0xffF7F7F7);
 }

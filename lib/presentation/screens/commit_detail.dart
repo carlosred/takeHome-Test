@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takehometest/Utils/contants.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class CommitDetailPage extends StatefulWidget {
@@ -13,17 +14,14 @@ class _CommitDetailPageState extends State<CommitDetailPage> {
 
   @override
   void initState() {
-    var url = widget.urlCommit.replaceFirst(
-        'https://api.github.com/repos/carlosred/takeHome-Test/git/commits/',
-        'https://github.com/carlosred/takeHome-Test/commit/');
+    var url = widget.urlCommit
+        .replaceFirst(Contants.apiGithubStr, Contants.urlGithubStr);
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {
-            // Update loading bar.
-          },
+          onProgress: (int progress) {},
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
@@ -44,7 +42,7 @@ class _CommitDetailPageState extends State<CommitDetailPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('takeHome-Test'),
+        title: const Text('Commit Detail Page'),
         centerTitle: true,
       ),
       body: WebViewWidget(controller: _controller),
