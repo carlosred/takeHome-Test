@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:takehometest/Utils/Contants.dart';
 import 'package:takehometest/data/controllers/commit_controller.dart';
-import 'package:takehometest/presentation/screens/commit_detail.dart';
 
 import '../widgets/commit_card.dart';
 import '../widgets/error_widget.dart';
@@ -47,32 +45,8 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
                 child: ListView.separated(
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: SizedBox(
-                          width: width,
-                          height: height * 0.25,
-                          child: Theme(
-                            data: ThemeData(
-                              cardColor: Contants.cardColor,
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CommitDetailPage(
-                                      urlCommit: data[index].commit!.url!,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: CommitCard(
-                                commit: data[index],
-                              ),
-                            ),
-                          ),
-                        ),
+                      return CommitCard(
+                        commit: data[index],
                       );
                     },
                     separatorBuilder: (context, index) => const SizedBox(

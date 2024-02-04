@@ -1,11 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:takehometest/data/repositories/commit_repository.dart';
+
 import 'package:takehometest/models/commit.dart';
 import 'package:takehometest/providers/providers_core.dart';
 
 part 'commit_controller.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class CommitController extends _$CommitController {
   @override
   Future<List<Commit>?> build() async {
