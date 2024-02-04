@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takehometest/Utils/Contants.dart';
 import 'package:takehometest/Utils/Utils.dart';
 import 'package:takehometest/data/controllers/commit_controller.dart';
+import 'package:takehometest/presentation/screens/commit_detail.dart';
 
 class HomeCommits extends ConsumerStatefulWidget {
   const HomeCommits({super.key});
@@ -54,97 +55,110 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
                             data: ThemeData(
                               cardColor: Contants.cardColor,
                             ),
-                            child: Card(
-                                surfaceTintColor: Contants.cardColor,
-                                color: Colors.white,
-                                elevation: 5,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      flex: 8,
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            flex: 4,
-                                            child: CachedNetworkImage(
-                                              imageUrl: data[index]
-                                                  .committer!
-                                                  .avatarUrl!,
-                                              progressIndicatorBuilder:
-                                                  (context, url,
-                                                          downloadProgress) =>
-                                                      CircularProgressIndicator(
-                                                          value:
-                                                              downloadProgress
-                                                                  .progress),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      const Icon(Icons.error),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            flex: 6,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                horizontal: 3,
-                                              ),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  const SizedBox(
-                                                    height: 20.0,
-                                                  ),
-                                                  Text(
-                                                    data[index]
-                                                        .commit!
-                                                        .message!,
-                                                    style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 18.0,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 5.0,
-                                                  ),
-                                                  Text(
-                                                    Utils.formatDate(data[index]
-                                                        .commit!
-                                                        .committer!
-                                                        .date!),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 5.0,
-                                                  ),
-                                                  Text(
-                                                    data[index]
-                                                        .commit!
-                                                        .committer!
-                                                        .name!,
-                                                    style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 14.0,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CommitDetailPage(
+                                      urlCommit: data[index].commit!.url!,
                                     ),
-                                    const Expanded(flex: 1, child: SizedBox())
-                                  ],
-                                )),
+                                  ),
+                                );
+                              },
+                              child: Card(
+                                  surfaceTintColor: Contants.cardColor,
+                                  color: Colors.white,
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        flex: 8,
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              flex: 4,
+                                              child: CachedNetworkImage(
+                                                imageUrl: data[index]
+                                                    .committer!
+                                                    .avatarUrl!,
+                                                progressIndicatorBuilder:
+                                                    (context, url,
+                                                            downloadProgress) =>
+                                                        CircularProgressIndicator(
+                                                            value:
+                                                                downloadProgress
+                                                                    .progress),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        const Icon(Icons.error),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Expanded(
+                                              flex: 6,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                  horizontal: 3,
+                                                ),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    const SizedBox(
+                                                      height: 20.0,
+                                                    ),
+                                                    Text(
+                                                      data[index]
+                                                          .commit!
+                                                          .message!,
+                                                      style: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 18.0,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5.0,
+                                                    ),
+                                                    Text(
+                                                      Utils.formatDate(
+                                                          data[index]
+                                                              .commit!
+                                                              .committer!
+                                                              .date!),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5.0,
+                                                    ),
+                                                    Text(
+                                                      data[index]
+                                                          .commit!
+                                                          .committer!
+                                                          .name!,
+                                                      style: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 14.0,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      const Expanded(flex: 1, child: SizedBox())
+                                    ],
+                                  )),
+                            ),
                           ),
                         ),
                       );
