@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:takehometest/Utils/Contants.dart';
 
@@ -29,14 +30,18 @@ class CommitCard extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CommitDetailPage(
-                    urlCommit: commit.htmlUrl!,
+              if (kIsWeb) {
+                Utils.launchUrlWeb(url: commit.htmlUrl!);
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CommitDetailPage(
+                      urlCommit: commit.htmlUrl!,
+                    ),
                   ),
-                ),
-              );
+                );
+              }
             },
             child: InkWell(
               child: Card(
@@ -54,25 +59,31 @@ class CommitCard extends StatelessWidget {
                           children: [
                             Expanded(
                               flex: 4,
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fitHeight,
-                                imageBuilder: (context, imageProvider) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: imageProvider,
-                                        fit: BoxFit.fill,
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(12.0),
+                                  topLeft: Radius.circular(12.0),
+                                ),
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.fitHeight,
+                                  imageBuilder: (context, imageProvider) {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                                imageUrl: commit.committer!.avatarUrl!,
-                                progressIndicatorBuilder:
-                                    (context, url, downloadProgress) =>
-                                        CircularProgressIndicator(
-                                            value: downloadProgress.progress),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
+                                    );
+                                  },
+                                  imageUrl: commit.committer!.avatarUrl!,
+                                  progressIndicatorBuilder:
+                                      (context, url, downloadProgress) =>
+                                          CircularProgressIndicator(
+                                              value: downloadProgress.progress),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                ),
                               ),
                             ),
                             const SizedBox(

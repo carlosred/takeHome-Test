@@ -56,16 +56,17 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
                 onRefresh: () =>
                     ref.read(commitControllerProvider.notifier).getCommitList(),
                 child: ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return CommitCard(
-                        commit: data[index],
-                      );
-                    },
-                    separatorBuilder: (context, index) => const SizedBox(
-                          height: 20,
-                        ),
-                    itemCount: data.length),
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return CommitCard(
+                      commit: data[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) => const SizedBox(
+                    height: 20,
+                  ),
+                  itemCount: data.length,
+                ),
               );
             } else {
               return const ErrorCommitWidget(
