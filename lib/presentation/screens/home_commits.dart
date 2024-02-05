@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:takehometest/data/controllers/commit_controller.dart';
 
+import '../widgets/appbar_widget.dart';
 import '../widgets/commit_card.dart';
 import '../widgets/error_widget.dart';
 
@@ -27,23 +28,9 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
     var homeCommitController = ref.watch(commitControllerProvider);
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 30,
-              height: 30,
-              child: Image.asset('assets/icon.png'),
-            ),
-            const SizedBox(
-              width: 15,
-            ),
-            const Text('TakeHome-Test'),
-          ],
-        ),
-        centerTitle: true,
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(65),
+        child: TakeHomeTestAppBar(title: 'TakeHome-Test'),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 10.0),

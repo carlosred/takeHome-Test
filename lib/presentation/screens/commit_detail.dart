@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../widgets/appbar_widget.dart';
+
 class CommitDetailPage extends StatefulWidget {
   const CommitDetailPage({super.key, required this.urlCommit});
   final String urlCommit;
@@ -38,10 +40,9 @@ class _CommitDetailPageState extends State<CommitDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text('Commit Detail Page'),
-        centerTitle: true,
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(65),
+        child: TakeHomeTestAppBar(title: 'Commit Detail Page'),
       ),
       body: WebViewWidget(controller: _controller),
     );
