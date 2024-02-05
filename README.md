@@ -1,16 +1,63 @@
-# takehometest
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# TakeHome-Test
 
-A few resources to get you started if this is your first Flutter project:
+### Description
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+A Flutter mobile app that allows you to view the latest commits of this public GitHub repository.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Features
+
+- View the latest commits of a public GitHub repository.
+- Support for both Android, iOS, and web platforms.
+
+### Setup
+
+1. **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/carlosred/takeHome-Test.git
+    cd takeHome-Test
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    flutter pub get
+    ```
+
+### Running the App
+
+#### Android
+
+```bash
+flutter run -d android
+```
+
+#### Web
+
+```bash
+flutter run -d web
+```
+
+### Usage
+
+1. Open the app on your device or emulator.
+2. Explore the latest commits on the repository.
+3. If you want to see the detail of the commit make tap in the card to go to the detail commit page
+   
+
+
+
+- The app uses the GitHub API to fetch and display commits. Ensure you have a stable internet connection.
+
+### Example on Android
+
+
+
+
+https://github.com/carlosred/takeHome-Test/assets/22422477/939ab6d3-c690-45c1-9d33-537ac3e6916b
+
+
+
