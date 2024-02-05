@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takehometest/Utils/contants.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -40,9 +41,9 @@ class _CommitDetailPageState extends State<CommitDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(65),
-        child: TakeHomeTestAppBar(title: 'Commit Detail Page'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(65),
+        child: TakeHomeTestAppBar(title: Contants.detailPageTitle),
       ),
       body: _isLoading
           ? const Center(

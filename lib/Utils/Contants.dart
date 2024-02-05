@@ -9,6 +9,8 @@ class Contants {
 
   static String appTitle = 'TakeHome-Test';
 
+  static String detailPageTitle = 'Commit Detail Page';
+
   static String commitUrl =
       'https://api.github.com/repos/carlosred/takeHome-Test/commits';
 
