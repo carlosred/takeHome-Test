@@ -33,7 +33,7 @@ class CommitCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CommitDetailPage(
-                    urlCommit: commit.url!,
+                    urlCommit: commit.htmlUrl!,
                   ),
                 ),
               );
@@ -92,29 +92,20 @@ class CommitCard extends StatelessWidget {
                                     ),
                                     Text(
                                       commit.commit!.message!,
-                                      style: const TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18.0,
-                                      ),
+                                      style: Contants.cardTittleTexStyle,
                                     ),
                                     const SizedBox(
                                       height: 5.0,
                                     ),
                                     Text(
-                                      Utils.formatDate(
-                                          commit.commit!.committer!.date!),
-                                    ),
+                                        Utils.formatDate(
+                                            commit.commit!.committer!.date!),
+                                        style: Contants.cardSubtittleTexStyle),
                                     const SizedBox(
                                       height: 5.0,
                                     ),
-                                    Text(
-                                      commit.commit!.committer!.name!,
-                                      style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14.0,
-                                      ),
-                                    )
+                                    Text(commit.commit!.committer!.name!,
+                                        style: Contants.cardSubtittleTexStyle)
                                   ],
                                 ),
                               ),

@@ -29,7 +29,20 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('takeHome-Test'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 30,
+              height: 30,
+              child: Image.asset('assets/icon.png'),
+            ),
+            const SizedBox(
+              width: 15,
+            ),
+            const Text('TakeHome-Test'),
+          ],
+        ),
         centerTitle: true,
       ),
       body: Container(

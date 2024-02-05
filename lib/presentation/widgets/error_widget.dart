@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takehometest/Utils/contants.dart';
 import 'package:takehometest/data/controllers/commit_controller.dart';
 
 class ErrorCommitWidget extends ConsumerWidget {
@@ -23,10 +24,7 @@ class ErrorCommitWidget extends ConsumerWidget {
           ),
           Text(
             message,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-            ),
+            style: Contants.errorTextStyle,
           ),
           const SizedBox(
             height: 10,
@@ -43,7 +41,7 @@ class ErrorCommitWidget extends ConsumerWidget {
             ),
             child: const Text(
               'Retry',
-              style: TextStyle(fontSize: 16),
+              style: Contants.cardTittleTexStyle,
             ),
           ),
         ],
