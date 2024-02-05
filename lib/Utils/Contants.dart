@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 class Contants {
   //messages constants
-
   static String errorMessage = "Error: The repository don't exist";
 
   static String appTitle = 'TakeHome-Test';
