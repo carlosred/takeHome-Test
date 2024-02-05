@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:takehometest/Utils/contants.dart';
 import 'package:takehometest/data/controllers/commit_controller.dart';
 
 import '../widgets/appbar_widget.dart';
@@ -28,14 +29,14 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
     var homeCommitController = ref.watch(commitControllerProvider);
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(65),
-        child: TakeHomeTestAppBar(title: 'TakeHome-Test'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(65),
+        child: TakeHomeTestAppBar(title: Contants.appTitle),
       ),
       body: Container(
+        height: height,
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         width: width,
-        height: height,
         child: homeCommitController.when(
           data: (data) {
             if (data != null) {
@@ -56,8 +57,8 @@ class _HomeCommitsState extends ConsumerState<HomeCommits> {
                 ),
               );
             } else {
-              return const ErrorCommitWidget(
-                message: "Error: The repository don't exist",
+              return ErrorCommitWidget(
+                message: Contants.errorMessage,
               );
             }
           },

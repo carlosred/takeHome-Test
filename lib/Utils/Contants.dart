@@ -3,6 +3,12 @@
 import 'package:flutter/material.dart';
 
 class Contants {
+  //messages constants
+
+  static String errorMessage = "Error: The repository don't exist";
+
+  static String appTitle = 'TakeHome-Test';
+
   static String commitUrl =
       'https://api.github.com/repos/carlosred/takeHome-Test/commits';
 

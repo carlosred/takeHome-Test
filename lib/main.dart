@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:takehometest/Utils/contants.dart';
 import 'package:takehometest/presentation/screens/home_commits.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,10 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TakeHome-Test',
+      title: Contants.appTitle,
       theme: ThemeData(
-        primaryColor: Colors.white,
-        cardColor: Colors.white,
+        primaryColor: Contants.cardColor,
+        cardColor: Contants.cardColor,
         useMaterial3: true,
       ),
       home: const HomeCommits(),

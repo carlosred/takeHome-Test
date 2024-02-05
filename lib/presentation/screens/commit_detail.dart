@@ -13,6 +13,7 @@ class CommitDetailPage extends StatefulWidget {
 
 class _CommitDetailPageState extends State<CommitDetailPage> {
   late final WebViewController _controller;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -21,10 +22,9 @@ class _CommitDetailPageState extends State<CommitDetailPage> {
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {},
-          onPageStarted: (String url) {},
-          onPageFinished: (String url) {},
-          onWebResourceError: (WebResourceError error) {},
+          onPageFinished: (url) => setState(() {
+            _isLoading = false;
+          }),
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.startsWith(widget.urlCommit)) {
               return NavigationDecision.prevent;
@@ -44,7 +44,11 @@ class _CommitDetailPageState extends State<CommitDetailPage> {
         preferredSize: Size.fromHeight(65),
         child: TakeHomeTestAppBar(title: 'Commit Detail Page'),
       ),
-      body: WebViewWidget(controller: _controller),
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : WebViewWidget(controller: _controller),
     );
   }
 }
